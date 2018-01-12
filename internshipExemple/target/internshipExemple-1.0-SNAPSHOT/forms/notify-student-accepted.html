@@ -1,0 +1,79 @@
+<form class="form-horizontal" name="notify-non-accepted" role="form">
+
+    <p>Notify student accepted intership?</p>
+
+    <div class="form-group">
+        <label class="control-label col-md-4">Internship Document</label>
+        <div class="form-control-static col-md-8">
+            <a cam-file-download="internshipDocument"></a>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-4">Student Name</label>
+        <div class="col-md-8">
+            <input cam-variable-name="student"
+                   cam-variable-type="String"
+                   id="student"
+                   class="form-control"
+                   type="text"
+                   disabled="disabled" />
+            <div class="help">
+                (e.g. &quot;Foulen Ben Foulen.&quot;)
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-4">Specialty</label>
+        <div class="col-md-8">
+            <input cam-variable-name="specialty"
+                   cam-variable-type="String"
+                   id="specialty"
+                   name="specialty"
+                   class="form-control"
+                   type="text"
+                   disabled="disabled" />
+            <div class="help">
+                (e.g. &quot;GL4&quot;)
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-4">Entreprise</label>
+        <div class="col-md-8">
+            <input cam-variable-name="entreprise"
+                   cam-variable-type="String"
+                   id="entreprise"
+                   name="entreprise"
+                   class="form-control"
+                   type="text"
+                   disabled="disabled" />
+            <div class="help">
+                (e.g. &quot;INSAT&quot;)
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10 col-md-offset-2">
+            <div class="checkbox">
+                <label>
+                    <input cam-variable-name="affectation"
+                           cam-variable-type="Boolean"
+                           type="checkbox"
+                           name="affectation"
+                           class="form-control"
+                           disabled="disabled"/>
+                    Affectation Letter?
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-4">Affectation Letter</label>
+        <div class="form-control-static col-md-8">
+            <a cam-file-download="affectationletter"></a>
+        </div>
+    </div>
+
+</form>

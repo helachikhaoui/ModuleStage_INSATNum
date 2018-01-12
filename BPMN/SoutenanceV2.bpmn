@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.11.3">
+  <bpmn:collaboration id="Collaboration_06ixfk7">
+    <bpmn:participant id="Participant_1hlpkm5" name="Département" processRef="Process_1" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_1" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>SequenceFlow_1honcsa</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0xwev9n" sourceRef="Task_0u2rhb4" targetRef="Task_10t2kx6" />
+    <bpmn:sequenceFlow id="SequenceFlow_1honcsa" sourceRef="StartEvent_1" targetRef="Task_1poxt2z" />
+    <bpmn:sequenceFlow id="SequenceFlow_16vfqrj" sourceRef="Task_1poxt2z" targetRef="Task_0u2rhb4" />
+    <bpmn:sequenceFlow id="SequenceFlow_1wm7r3c" sourceRef="Task_1apxsb8" targetRef="EndEvent_1usjz2y" />
+    <bpmn:userTask id="Task_1poxt2z" name="Choisir l&#39;etudiant et la filiére">
+      <bpmn:incoming>SequenceFlow_1honcsa</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_16vfqrj</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Task_0u2rhb4" name="Selectionner la date, l&#39;heure et la salle de la soutenance">
+      <bpmn:incoming>SequenceFlow_16vfqrj</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0xwev9n</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Task_10t2kx6" name="Choisir l&#39;examinateur et le président du jury ">
+      <bpmn:incoming>SequenceFlow_0xwev9n</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0ffhn8t</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="SequenceFlow_0ffhn8t" sourceRef="Task_10t2kx6" targetRef="Task_1apxsb8" />
+    <bpmn:sendTask id="Task_1apxsb8" name="Envoyer le mail à l&#39;etudiant, et les membres du jury">
+      <bpmn:incoming>SequenceFlow_0ffhn8t</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1wm7r3c</bpmn:outgoing>
+    </bpmn:sendTask>
+    <bpmn:endEvent id="EndEvent_1usjz2y">
+      <bpmn:incoming>SequenceFlow_1wm7r3c</bpmn:incoming>
+    </bpmn:endEvent>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_06ixfk7">
+      <bpmndi:BPMNShape id="Participant_1hlpkm5_di" bpmnElement="Participant_1hlpkm5">
+        <dc:Bounds x="264" y="77" width="928" height="249" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="318" y="178" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="291" y="214" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0xwev9n_di" bpmnElement="SequenceFlow_0xwev9n">
+        <di:waypoint xsi:type="dc:Point" x="667" y="196" />
+        <di:waypoint xsi:type="dc:Point" x="736" y="195" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="701.5" y="174.5" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_1usjz2y_di" bpmnElement="EndEvent_1usjz2y">
+        <dc:Bounds x="1071.133" y="178" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1089.133" y="218" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1honcsa_di" bpmnElement="SequenceFlow_1honcsa">
+        <di:waypoint xsi:type="dc:Point" x="354" y="196" />
+        <di:waypoint xsi:type="dc:Point" x="405" y="196" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="379.5" y="175" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_16vfqrj_di" bpmnElement="SequenceFlow_16vfqrj">
+        <di:waypoint xsi:type="dc:Point" x="505" y="196" />
+        <di:waypoint xsi:type="dc:Point" x="567" y="196" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="536" y="175" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1wm7r3c_di" bpmnElement="SequenceFlow_1wm7r3c">
+        <di:waypoint xsi:type="dc:Point" x="1008" y="196" />
+        <di:waypoint xsi:type="dc:Point" x="1071" y="196" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1039.5" y="175" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="SendTask_0zsdmim_di" bpmnElement="Task_1apxsb8">
+        <dc:Bounds x="908" y="156" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_0m3a1v2_di" bpmnElement="Task_10t2kx6">
+        <dc:Bounds x="736" y="156" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_0lqwgja_di" bpmnElement="Task_0u2rhb4">
+        <dc:Bounds x="567" y="156" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_1cdgn41_di" bpmnElement="Task_1poxt2z">
+        <dc:Bounds x="405" y="156" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0ffhn8t_di" bpmnElement="SequenceFlow_0ffhn8t">
+        <di:waypoint xsi:type="dc:Point" x="836" y="196" />
+        <di:waypoint xsi:type="dc:Point" x="908" y="196" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="872" y="175" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

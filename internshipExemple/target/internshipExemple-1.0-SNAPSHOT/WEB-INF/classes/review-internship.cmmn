@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cmmn:definitions xmlns:dc="http://www.omg.org/spec/CMMN/20151109/DC" xmlns:di="http://www.omg.org/spec/CMMN/20151109/DI" xmlns:cmmndi="http://www.omg.org/spec/CMMN/20151109/CMMNDI" xmlns:cmmn="http://www.omg.org/spec/CMMN/20151109/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camunda="http://camunda.org/schema/1.0/cmmn" id="Test" targetNamespace="http://bpmn.io/schema/cmmn" exporter="Camunda Modeler" exporterVersion="1.10.0">
+  <cmmn:case id="ReviewInternshipCase" name="Review Internship">
+    <cmmn:casePlanModel id="CasePlanModel_1" name="Review Internship">
+      <cmmn:planItem id="AssignReviewer" definitionRef="HumanTask_1eg9tb8" />
+      <cmmn:planItem id="ReviewInternship" name="Review Internship" definitionRef="HumanTask_1uw9cty">
+        <cmmn:entryCriterion id="EntryCriterion_05s9w0g" sentryRef="Sentry_0730j8g" />
+      </cmmn:planItem>
+      <cmmn:sentry id="Sentry_0730j8g">
+        <cmmn:planItemOnPart id="PlanItemOnPart_1p8fr3x" sourceRef="AssignReviewer">        <cmmn:standardEvent>complete</cmmn:standardEvent>
+</cmmn:planItemOnPart>
+      </cmmn:sentry>
+      <cmmn:humanTask id="HumanTask_1eg9tb8" name="Assign Reviewer" camunda:formKey="embedded:app:forms/assign-reviewer.html" camunda:assignee="john" />
+      <cmmn:humanTask id="HumanTask_1uw9cty" name="Review Internship" camunda:formKey="embedded:app:forms/review-internship.html" camunda:assignee="${reviewer}" camunda:dueDate="${dateTime().plusDays(2).toDate()}" />
+    </cmmn:casePlanModel>
+  </cmmn:case>
+  <cmmndi:CMMNDI>
+    <cmmndi:CMMNDiagram id="reviewInternship">
+      <cmmndi:Size xsi:type="dc:Dimension" width="500" height="500" />
+      <cmmndi:CMMNShape id="DI_CasePlanModel_1" cmmnElementRef="CasePlanModel_1">
+        <dc:Bounds x="245" y="25" width="437" height="298" />
+        <cmmndi:CMMNLabel />
+      </cmmndi:CMMNShape>
+      <cmmndi:CMMNShape id="PlanItem_1dvg75o_di" cmmnElementRef="AssignReviewer">
+        <dc:Bounds x="312" y="67" width="100" height="80" />
+        <cmmndi:CMMNLabel />
+      </cmmndi:CMMNShape>
+      <cmmndi:CMMNShape id="EntryCriterion_05s9w0g_di" cmmnElementRef="EntryCriterion_05s9w0g">
+        <dc:Bounds x="512" y="222" width="20" height="28" />
+        <cmmndi:CMMNLabel />
+      </cmmndi:CMMNShape>
+      <cmmndi:CMMNEdge id="PlanItemOnPart_1p8fr3x_di" cmmnElementRef="PlanItemOnPart_1p8fr3x" targetCMMNElementRef="EntryCriterion_05s9w0g" isStandardEventVisible="true">
+        <di:waypoint xsi:type="dc:Point" x="412" y="107" />
+        <di:waypoint xsi:type="dc:Point" x="462" y="107" />
+        <di:waypoint xsi:type="dc:Point" x="462" y="236" />
+        <di:waypoint xsi:type="dc:Point" x="512" y="236" />
+        <cmmndi:CMMNLabel>
+          <dc:Bounds x="468" y="156" width="50" height="12" />
+        </cmmndi:CMMNLabel>
+      </cmmndi:CMMNEdge>
+      <cmmndi:CMMNShape id="PlanItem_08xksal_di" cmmnElementRef="ReviewInternship">
+        <dc:Bounds x="522" y="199" width="100" height="80" />
+        <cmmndi:CMMNLabel />
+      </cmmndi:CMMNShape>
+    </cmmndi:CMMNDiagram>
+  </cmmndi:CMMNDI>
+</cmmn:definitions>

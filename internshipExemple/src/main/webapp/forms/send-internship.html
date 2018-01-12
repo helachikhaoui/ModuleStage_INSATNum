@@ -1,0 +1,96 @@
+<form name="internshipForm" class="form-horizontal" style="height: 420px; line-height: 2.5;">
+
+    <div class="form-group">
+        <label class="control-label col-md-4">Internship Document</label>
+        <div class="col-md-8">
+            <input type="file"
+                   id="internshipDocumentUpload"
+                   cam-variable-name="internshipDocument"
+                   cam-variable-type="File"
+                   cam-max-filesize="10000000"
+                   class="form-control"/>
+            <div class="help-block">This field is required</div>
+        </div>
+    </div>
+
+    <script cam-script type="text/form-script">
+        var fileUpload = $('#internshipDocumentUpload');
+        var fileUploadHelpBlock = $('.help-block', fileUpload.parent());
+
+        function flagFileUpload() {
+          var hasFile = fileUpload.get(0).files.length > 0;
+          fileUpload[hasFile ? 'removeClass' : 'addClass']('ng-invalid');
+          fileUploadHelpBlock[hasFile ? 'removeClass' : 'addClass']('error');
+          return hasFile;
+        }
+
+        fileUpload.on('change', function () {
+          flagFileUpload();
+        });
+
+        camForm.on('submit', function(evt) {
+          var hasFile = flagFileUpload();
+
+          // prevent submit if user has not provided a file
+          evt.submitPrevented = !hasFile;
+        });
+      </script>
+    <div class="form-group">
+        <label class="control-label col-md-4">Student Name</label>
+        <div class="col-md-8">
+            <input cam-variable-name="student"
+                   cam-variable-type="String"
+                   id="student"
+                   class="form-control"
+                   type="text"
+                   required />
+            <div class="help">
+                (e.g. &quot;Foulen Ben Foulen.&quot;)
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-4">Specialty</label>
+        <div class="col-md-8">
+            <input cam-variable-name="specialty"
+                   cam-variable-type="String"
+                   id="specialty"
+                   name="specialty"
+                   class="form-control"
+                   type="text"
+                   required />
+            <div class="help">
+                (e.g. &quot;GL4&quot;)
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-4">Entreprise</label>
+        <div class="col-md-8">
+            <input cam-variable-name="entreprise"
+                   cam-variable-type="String"
+                   id="entreprise"
+                   name="entreprise"
+                   class="form-control"
+                   type="text"
+                   required />
+            <div class="help">
+                (e.g. &quot;INSAT&quot;)
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10 col-md-offset-2">
+            <div class="checkbox">
+                <label>
+                    <input cam-variable-name="affectation"
+                           cam-variable-type="Boolean"
+                           type="checkbox"
+                           name="affectation"
+                           class="form-control"/>
+                    Affectation Letter?
+                </label>
+            </div>
+        </div>
+    </div>
+</form>
